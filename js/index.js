@@ -5,6 +5,7 @@
 const busImg=document.querySelector('.intro img');
 busImg.onclick= function(){
     console.log('clicked on busimage');
+    busImg.style.borderRadius= "60%";
 }
 
 // nav a mouseover change font color
@@ -16,10 +17,24 @@ navA.forEach(function(item){
     })
 })
 
-// scroll will change text of nav a to bold
+// scroll will change text to bold
 const headOne=document.querySelector('*');
 headOne.addEventListener('wheel',function(event){
     console.log("user is scrolling");
    headOne.style.fontWeight="bold";
 
+})
+
+// bussimage double click will revert fontweight and busimg border radius
+busImg.addEventListener('dblclick',function(event){
+    console.log('double clicked an bus image');
+    busImg.style.borderRadius= "1%";
+    headOne.style.fontWeight= "normal";
+})
+
+
+// when finish loading the bus image alert welcome
+busImg.addEventListener('load',function(event){
+    console.log("consolelogging before alert");
+    return alert("Welcome to the Fun Bus Travel Agency")
 })
