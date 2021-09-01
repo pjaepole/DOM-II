@@ -3,10 +3,12 @@
 
 // busimage onclick change to different picture
 const busImg=document.querySelector('.intro img');
-busImg.onclick= function(){
+busImg.addEventListener('click',function(event){
     console.log('clicked on busimage');
     busImg.style.borderRadius= "60%";
-}
+})
+    
+
 
 // nav a mouseover change font color
 const navA=document.querySelectorAll('.nav a');
@@ -105,8 +107,37 @@ dragevent.addEventListener('dragover',function(event){
 })
 
 
-//select home button reload page Html.index reload
+//resizing window > Html.index reload
 window.addEventListener('resize',function(event){
     console.log('window is resized');
     return this.location.reload();
 })
+
+//
+const navStopper= document.querySelectorAll('.nav a');
+console.log(navStopper);
+navStopper.forEach(item=>{
+    item.addEventListener('click',(function(event){
+        event.preventDefault();
+        console.log('it stopped refreshing');
+    }))
+} )
+
+
+// adding propagation on document
+const elems=document.querySelectorAll('*');
+elems.forEach(elem =>{
+    elem.addEventListener('click',event=>{
+        console.log(`target: ${event.target.nodeName}`);
+        console.log(`current target: ${event.currentTarget}`);
+    })
+})
+
+
+
+
+navStopper.forEach(item=>{
+    item.addEventListener('click',(function(event){
+        event.stopPropagation();
+        console.log('it stopped propagating');
+    }))}) 
